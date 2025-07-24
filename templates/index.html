@@ -71,4 +71,28 @@
         }
     </style>
     </head>
+    <body>
+        <div class="container">
+            <h1>Send SMS Message</h1>
+            {% with messages=get_flashed_messages(with_categories=true)%}
+            {% if messages %}
+                <ul class="flashes" style="list-style-type: none; padding: 0;">
+                    {% for category, message in message %}
+                         <li class="flash-message flash-{{ category }}"></li>
+                    {% endfor %}
+                <ul>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <label for="sender_id">Sender ID:</label>
+                <input type="text" id="sender_id" name="sender_id" value="Your company" required>"
+                <label for="receipient_number">Recipient_number(e.g., 2567xxxxxxx):,</label>"
+                <input type="text" id="receipient_number" name="recipient_number" placeholder="2567xxxxxxx" required>
+                <label for="message_text">Message Text:</label>
+                <textarea id="message_text" name="message_text" required></textarea>
+                <button type="submit">Send SMS</button>
+            </form>
+        </div>
+    </body>
 </html>
